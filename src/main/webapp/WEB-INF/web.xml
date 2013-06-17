@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app 
+   xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+   version="2.5">
+  <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>com.fmatosqg.tutorial.jetty.helloworld.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/hello/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Goodbye</servlet-name>
+    <servlet-class>com.fmatosqg.tutorial.jetty.helloworld.GoodbyeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Goodbye</servlet-name>
+    <url-pattern>/goodbye/*</url-pattern>
+  </servlet-mapping>
+  
+  <display-name>HelloService</display-name>
+  
+  <listener>
+    <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+  </listener>
+  
+  <servlet>
+    <servlet-name>HelloService</servlet-name>
+    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloService</servlet-name>
+    <url-pattern>/HelloService</url-pattern>
+  </servlet-mapping>
+    
+  <servlet>
+    <servlet-name>HelloGreeting</servlet-name>
+    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloGreeting</servlet-name>
+    <url-pattern>/HelloGreeting</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SimpleService</servlet-name>
+    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SimpleService</servlet-name>
+    <url-pattern>/SimpleService</url-pattern>
+  </servlet-mapping>    
+
+    
+</web-app>

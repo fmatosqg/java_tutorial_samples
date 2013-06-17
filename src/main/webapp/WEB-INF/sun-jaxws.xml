@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+	version="2.0">
+
+	<endpoint name="HelloService" implementation="com.fmatosqg.tutorial.webservice.HelloService"
+		url-pattern="/HelloService" />
+
+	<endpoint name="HelloGreeting"
+		implementation="com.fmatosqg.tutorial.webservice.HelloGreetingImpl"
+		url-pattern="/HelloGreeting" />
+		
+		<endpoint name="SimpleService"
+		implementation="com.fmatosqg.tutorial.webservice.simpleservice.SimplePortTypeImpl"
+		url-pattern="/SimpleService" />
+</endpoints>
+
