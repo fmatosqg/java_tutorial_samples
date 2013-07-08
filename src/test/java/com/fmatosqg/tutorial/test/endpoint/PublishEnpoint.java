@@ -2,7 +2,8 @@ package com.fmatosqg.tutorial.test.endpoint;
 
 import javax.xml.ws.Endpoint;
 
-import com.fmatosqg.tutorial.webservice.HelloService;
+import com.fmatosqg.tutorial.webservice.hello.HelloService;
+import com.fmatosqg.tutorial.webservice.hello.HelloServiceImpl;
 
 /**
  * This class publishes the {@link HelloService} endpoint
@@ -15,6 +16,6 @@ public class PublishEnpoint {
 		
 		final String url = "http://localhost:8080/WS/Hello";
 		System.out.println("Publishing endpoint in " + url);
-		Endpoint.publish(url,new HelloService());
+		Endpoint.publish(url,new HelloServiceImpl());
 	}
 }

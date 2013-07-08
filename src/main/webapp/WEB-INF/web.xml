@@ -39,13 +39,13 @@
   </servlet-mapping>
     
   <servlet>
-    <servlet-name>HelloGreeting</servlet-name>
+    <servlet-name>Greeting</servlet-name>
     <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HelloGreeting</servlet-name>
-    <url-pattern>/HelloGreeting</url-pattern>
+    <servlet-name>Greeting</servlet-name>
+    <url-pattern>/Greeting</url-pattern>
   </servlet-mapping>
 
   <servlet>

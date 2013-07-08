@@ -1,4 +1,4 @@
-package com.fmatosqg.tutorial.webservice.simpleservice;
+package com.fmatosqg.tutorial.webservice.greeting;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -7,13 +7,18 @@ import java.util.Iterator;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-public class SimplePortTypeClient {
 
+public class GreetingsPortTypeClient {
+
+	private static final String endpoint = "http://localhost:8080/Greeting";
+	private static final QName qname = new QName("http://greeting.webservice.tutorial.fmatosqg.com/","GreetingImplService");
+	
 	public static void main(String[] args) {
 		try {
-			SimplePortTypeClient client = new SimplePortTypeClient();
-			client.test();
+			GreetingsPortTypeClient client = new GreetingsPortTypeClient();
+			
 			client.list();
+			client.test();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -24,17 +29,21 @@ public class SimplePortTypeClient {
 	 */
 	 private void test() { 
 		 try{
-			 String endpoint = "http://localhost:8080/SimpleService";  
+			    
 			 URL url = new URL(endpoint);
-
-			 QName qname = new QName("http://webservice.tutorial.fmatosqg.com/SimpleService.wsdl","SimplePortTypeImplService");
 			 Service service = Service.create(url, qname);
-
-			 SimplePortType port = (SimplePortType) service.getPort(SimplePortType.class);
-			 System.out.println(port.sayHello("Duuuuuuude"));
+			 Greeting port = service.getPort(Greeting.class);
+			 
+			 port.sayIt();
+			 Woohoo woo = new Woohoo();
+			 woo.setAbc("abcd");
+			 System.out.println(port.createGreeting(woo));
+			 
+			 
 
 		 }catch(Exception e){
 			 System.err.println(e.toString());
+			 e.printStackTrace();
 		 }
 
 	 }
@@ -43,12 +52,11 @@ public class SimplePortTypeClient {
 	  * List QNames under service
 	  */
 	 private void list() {
-		 String endpoint = "http://localhost:8080/SimpleService";   
 		 
 		 try {
 			 URL url = new URL(endpoint);
 
-			 QName qname = new QName("http://webservice.tutorial.fmatosqg.com/SimpleService.wsdl","SimplePortTypeImplService");
+
 			 Service service = Service.create(url, qname);
 
 			 System.out.println("Service is " + service.getServiceName());
@@ -60,7 +68,6 @@ public class SimplePortTypeClient {
 
 			 }
 		 } catch (MalformedURLException e) {
-			 // TODO Auto-generated catch block
 			 e.printStackTrace();
 		 }
 	 }

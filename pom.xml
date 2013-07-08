@@ -74,25 +74,25 @@
 					<execution>
 						<id>HelloService</id>
 						<configuration>
-							<sei>com.fmatosqg.tutorial.webservice.HelloService</sei>
-							<sourceDestDir>target/generated/src/java</sourceDestDir>
+							<sei>com.fmatosqg.tutorial.webservice.hello.HelloServiceImpl</sei>							
+							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>							
 							<genWsdl>true</genWsdl> <!-- generates wsdl and xsd files in \target\jaxws\wsgen\wsdl folder -->
 						</configuration>
 						<goals>
-							<goal>wsgen</goal>
+							<goal>wsgen</goal>	
 						</goals>
 					</execution>
 					<execution>
 						<id>Greeting</id>
 						<configuration>
-							<sei>com.fmatosqg.tutorial.webservice.HelloGreetingImpl</sei>
-							<sourceDestDir>target/generated/src/java</sourceDestDir>
+							<sei>com.fmatosqg.tutorial.webservice.greeting.GreetingImpl</sei>
+							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>
+							<keep>true</keep>
+							<target>2.0</target>							
 							<genWsdl>true</genWsdl> <!-- generates wsdl and xsd files in \target\jaxws\wsgen\wsdl folder -->
 						</configuration>
 						<goals>
 							<goal>wsgen</goal>
-							<goal>wsimport</goal>
-							<goal>wsgen-test</goal>
 						</goals>
 					</execution>
 
@@ -105,7 +105,7 @@
 						<wsdlDirectory>src/main/wsdl</wsdlDirectory>
 						<wsdlLocation>http://localhost:8080/SimpleService?wsdl</wsdlLocation>
 						<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>		
-						<target>2.0</target>											
+						<target>2.0</target> <!-- this is key to generate compatible code  -->											
 						</configuration>
 
 						<goals>

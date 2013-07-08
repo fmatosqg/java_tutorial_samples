@@ -15,7 +15,7 @@ public class SimplePortTypeImpl implements SimplePortType {
 	@WebResult(name = "greeting", partName = "greeting")
 	public String sayHello(
 			@WebParam(name = "firstName", partName = "firstName") String firstName) {
-		return "I'm greeting you " + firstName;
+		return "Hey " + firstName;
 	}
 
 	
