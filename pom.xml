@@ -13,6 +13,14 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Basic jetty servlets work with only this -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -35,6 +43,21 @@
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.0.5</version>
+		</dependency>
+
+		<!-- Allows for unit testing of rest services (servlets) and/or building 
+			rest client apps -->
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+
+		<!-- Handles post requests that use multipart encoding -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3</version>
 		</dependency>
 
 	</dependencies>
@@ -74,12 +97,12 @@
 					<execution>
 						<id>HelloService</id>
 						<configuration>
-							<sei>com.fmatosqg.tutorial.webservice.hello.HelloServiceImpl</sei>							
-							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>							
+							<sei>com.fmatosqg.tutorial.webservice.hello.HelloServiceImpl</sei>
+							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>
 							<genWsdl>true</genWsdl> <!-- generates wsdl and xsd files in \target\jaxws\wsgen\wsdl folder -->
 						</configuration>
 						<goals>
-							<goal>wsgen</goal>	
+							<goal>wsgen</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -88,7 +111,7 @@
 							<sei>com.fmatosqg.tutorial.webservice.greeting.GreetingImpl</sei>
 							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>
 							<keep>true</keep>
-							<target>2.0</target>							
+							<target>2.0</target>
 							<genWsdl>true</genWsdl> <!-- generates wsdl and xsd files in \target\jaxws\wsgen\wsdl folder -->
 						</configuration>
 						<goals>
@@ -96,16 +119,17 @@
 						</goals>
 					</execution>
 
-					<!-- by default processes wsdl files in ${basedir}/src/wsdl and creates clients -->
+					<!-- by default processes wsdl files in ${basedir}/src/wsdl and creates 
+						clients -->
 					<execution>
 						<id>SimpleService</id>
-						
+
 						<!-- Carefull, very tricky to set up (strange behaviour) -->
 						<configuration>
-						<wsdlDirectory>src/main/wsdl</wsdlDirectory>
-						<wsdlLocation>http://localhost:8080/SimpleService?wsdl</wsdlLocation>
-						<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>		
-						<target>2.0</target> <!-- this is key to generate compatible code  -->											
+							<wsdlDirectory>src/main/wsdl</wsdlDirectory>
+							<wsdlLocation>http://localhost:8080/SimpleService?wsdl</wsdlLocation>
+							<sourceDestDir>target/generated/src/stubs/java</sourceDestDir>
+							<target>2.0</target> <!-- this is key to generate compatible code -->
 						</configuration>
 
 						<goals>

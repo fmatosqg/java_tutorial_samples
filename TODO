@@ -1,0 +1,13 @@
+===============================================================================
+Webservice: use
+
+@WebServiceRef(wsdlLocation = 
+      "META-INF/wsdl/localhost_8080/helloservice/HelloService.wsdl")
+      
+Note: this code only works when running inside the server, meaning that you 
+can't put that in a client app. See example where a servlet calls a webservice
+at http://docs.oracle.com/javaee/6/tutorial/doc/bnayn.html
+===============================================================================
+===============================================================================
+===============================================================================
+===============================================================================

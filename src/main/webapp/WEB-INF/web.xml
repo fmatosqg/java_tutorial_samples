@@ -6,20 +6,29 @@
    version="2.5">
   <servlet>
     <servlet-name>Hello</servlet-name>
-    <servlet-class>com.fmatosqg.tutorial.jetty.helloworld.HelloServlet</servlet-class>
+    <servlet-class>com.fmatosqg.tutorial.rest.HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Hello</servlet-name>
     <url-pattern>/hello/*</url-pattern>
   </servlet-mapping>
-  
+
   <servlet>
     <servlet-name>Goodbye</servlet-name>
-    <servlet-class>com.fmatosqg.tutorial.jetty.helloworld.GoodbyeServlet</servlet-class>
+    <servlet-class>com.fmatosqg.tutorial.rest.GoodbyeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Goodbye</servlet-name>
     <url-pattern>/goodbye/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Complex</servlet-name>
+    <servlet-class>com.fmatosqg.tutorial.rest.ComplexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Complex</servlet-name>
+    <url-pattern>/complex/*</url-pattern>
   </servlet-mapping>
   
   <display-name>HelloService</display-name>
