@@ -40,11 +40,11 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>javax.jdo</groupId>
             <artifactId>jdo-api</artifactId>
             <version>3.0.1</version>
-        </dependency>
+        </dependency> -->
 
         <!-- Test Dependencies -->
         <dependency>
@@ -143,6 +143,37 @@
                 </executions>
             </plugin>
         </plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter> 
+									<!-- org.codehaus.mojo:versions-maven-plugin:2.1:display-plugin-updates -->
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>versions-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>display-dependency-updates</goal>
+											<goal>display-plugin-updates</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
     </build>
 
 </project>
