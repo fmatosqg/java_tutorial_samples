@@ -1,0 +1,26 @@
+Copied and adapted from http://googlewebtoolkit.blogspot.com.ar/2010/08/how-to-use-google-plugin-for-eclipse.html
+
+If you have an existing Maven project in Eclipse and want to enable GPE functionality, follow these steps:
+I started these steps after having created the skeleton archetype -Dfilter=com.google.appengine.archetypes:hello-endpoints-archetype
+
+    prepare the pom file with the troubleshooting steps shown below (you can do that later too)
+    mvn eclipse:clean eclipse:eclipse
+        you'll need to do that again when you edit pom.xml
+    Import project in eclipse as "existing eclipse project"
+        if it's already created, do a refresh
+    Configure Eclipse: open your project's properties (Alt+Enter or right-click, Properties)
+        Under Google | App Engine, select the version of the App Engine SDK you're using.
+            check that if you go into properties/google you get an entry menu for app engine, another for web application, and another for web toolkit. if you don't then you didn't import the project properly (maybe you imported as a maven project?)
+            GPE is not yet able to use the version defined in your Maven POM, so you may need to download your SDK version using the Eclipse software updater (see http://code.google.com/eclipse/docs/download.html)
+        Under Google | Web Toolkit, likewise select the version of the GWT SDK you're using.
+            As with the App Engine SDK, install it via the Eclipse plugin update site if needed.
+        Under Google | Web Application, check the "This project has a WAR directory" box and point it to your project's src/main/webapp directory.
+            This is the standard WAR source folder for Maven Web projects. Be sure that the "Launch and deploy from this directory" box is NOT checked.
+            personal note: this may force you to compile the project with maven, so I'm not sure it is desirable
+        Under Java Build Path, select the Order and Export tab and move all Maven dependencies to the BOTTOM.
+            Otherwise, GPE will see the App Engine and GWT SDKs from the Maven repo on the build path and complain that they are not valid. This is because GPE expects a specific SDK structure used to enable other tooling.
+            This didn't work for me at first, so I had to do some tinkering and revisit this step later.
+        Also under Java Build Path, select the Source tab and ensure that the Build output directory is enabled and pointing to target/your-project-name/WEB-INF/classes. If you created the project with mvn eclipse:eclipse, this should be done for you automatically.
+    Finally, and this is very important, the first time you launch your project using Run As | Web Application (or Debug), you will be prompted to select the war directly. This is NOT src/main/webapp, but rather the WAR output folder, which is target/your-project-name.
+        Before running on eclipse, you need to do a #mvn compile so some files like appengine-web.xml are copied to the proper folder (I can't figure out how to make eclipse do that on its own)
+            I'm not sure if these files get updated automatically when you edit them???
