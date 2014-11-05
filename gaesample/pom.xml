@@ -11,6 +11,7 @@
     <properties>
         <appengine.app.version>1</appengine.app.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.2.3.RELEASE</spring.version>
     </properties>
 
     <prerequisites>
@@ -59,6 +60,45 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Spring Dependencies -->  
+           <dependency>   
+                <groupId>org.springframework</groupId>   
+                <artifactId>spring-core</artifactId>   
+                <version>${spring.version}</version>   
+           </dependency>   
+           <dependency>   
+                <groupId>org.springframework</groupId>   
+                <artifactId>spring-context</artifactId>   
+                <version>${spring.version}</version>   
+           </dependency>   
+           <dependency>   
+                <groupId>org.springframework</groupId>   
+                <artifactId>spring-beans</artifactId>   
+                <version>${spring.version}</version>   
+           </dependency>   
+        <!-- Spring MVC framework -->      
+           <dependency>   
+                <groupId>org.springframework</groupId>   
+                <artifactId>spring-webmvc</artifactId>   
+                <version>${spring.version}</version>   
+           </dependency>   
+           <dependency>   
+                <groupId>org.springframework</groupId>   
+                <artifactId>spring-web</artifactId>   
+                <version>${spring.version}</version>   
+           </dependency>   
+           
+           <!-- solves weird runtime issue  DevAppServerMain class not found-->
+           <dependency>
+			    <groupId>com.google.appengine</groupId>
+			    <artifactId>appengine-tools-sdk</artifactId>
+			    <version>1.2.1</version>
+			    <!-- <version>1.9.15</version> -->
+			</dependency>
+			
+            
+        <!-- App engine -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-testing</artifactId>
