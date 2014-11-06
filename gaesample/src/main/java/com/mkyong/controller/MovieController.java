@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
   
 @Controller
-@RequestMapping("/movie")
+//@RequestMapping("/movie")
 public class MovieController {
  
 	//DI via Spring
 	String message;
-	
-	public MovieController() {
-		System.out.println("asdsadsad");
-	}
+//	
+//	public MovieController() {
+//		System.out.println("asdsadsad");
+//	}
  
 	@RequestMapping(value="/movie/{name}", method = RequestMethod.GET)
 	public String getMovie(@PathVariable String name, ModelMap model) {
