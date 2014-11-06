@@ -18,15 +18,15 @@ public class MovieController {
 //	}
  
 	@RequestMapping(value="/movie/{name}", method = RequestMethod.GET)
-	public String getMovie(@PathVariable String name, ModelMap model) {
+	public String getMovie(@PathVariable String name) {
  
 		System.out.println("qweqeqw");
 		
-		model.addAttribute("movie", name);
-		model.addAttribute("message", this.message);
+//		model.addAttribute("movie", name);
+//		model.addAttribute("message", this.message);
  
 		//return to jsp page, configured in mvc-dispatcher-servlet.xml, view resolver
-		return "list";
+		return "list" + name;
  
 	}
  
