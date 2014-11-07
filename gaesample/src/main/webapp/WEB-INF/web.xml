@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <servlet>
+<!--    <servlet>
         <servlet-name>SystemServiceServlet</servlet-name>
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
@@ -14,4 +14,48 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+
+-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+<!-- this prevents spring from creating the beans correctly, although classes were scanned properly       
+-->
+ <init-param>
+            <param-name>contextConfigLocation</param-name>
+ <!--           <param-value>classpath*:applicationContext.xml</param-value>  -->
+        </init-param>
+        <load-on-startup>1</load-on-startup> 
+    </servlet>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+<!--            classpath*:/applicationContext.xml -->
+            /WEB-INF/applicationContext*.xml
+        </param-value>
+    </context-param>
+
+
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
+        <url-pattern>/abc</url-pattern>
+    </servlet-mapping>
+
+        <bean id="viewResolver"
+                class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix">
+                        <value>/WEB-INF/pages/</value>
+                </property>
+               <!-- <property name="suffix">
+                        <value>.jsp</value>
+                </property> -->
+        </bean>
 </web-app>
