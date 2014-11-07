@@ -25,8 +25,13 @@ I started these steps after having created the skeleton archetype -Dfilter=com.g
         Before running on eclipse, you need to do a #mvn compile so some files like appengine-web.xml are copied to the proper folder (I can't figure out how to make eclipse do that on its own)
             I'm not sure if these files get updated automatically when you edit them???
             
-            
-            
+To run on maven
+mvn appengine:devserver
+or
+mvn appengine:update            
+
+mkdir -p target/generated-sources/appengine-endpoints/WEB-INF            
+
 To add spring:
 follow http://koushiknarayanan.blogspot.com.ar/2013/10/create-google-app-engine-project-that.html for maven
 follow http://www.mkyong.com/google-app-engine/google-app-engine-spring-3-mvc-rest-example/            
