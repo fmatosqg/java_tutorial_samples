@@ -57,6 +57,14 @@ public class TestController {
 		return downloader.getRandomPhotoUrl();
 	}
 	
+	@RequestMapping(value="test/ttt", produces={"application/json"})
+	public @ResponseBody
+    String getImageTtt()  {
+		
+		AbstractRssDownloader downloader = new JPLDownloader();
+		return downloader.getRandomPhotoUrl();
+	}
+	
 //	@RequestMapping(value="test/list")
 	@RequestMapping(value="test/list", produces={"application/json"})
 	public 
@@ -67,5 +75,8 @@ public class TestController {
 
 		return downloader.getRandomAlbum();
 	}
+	
+	
+	
 
 }

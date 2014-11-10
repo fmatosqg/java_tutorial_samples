@@ -32,5 +32,4 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
  -->
 <!-- <annotation-driven /> -->
 
-	
 </beans>
