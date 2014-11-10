@@ -49,8 +49,7 @@
         <url-pattern>/abc</url-pattern>
     </servlet-mapping>
 
-        <bean id="viewResolver"
-                class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
                 <property name="prefix">
                         <value>/WEB-INF/pages/</value>
                 </property>
@@ -58,4 +57,16 @@
                         <value>.jsp</value>
                 </property> -->
         </bean>
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value>com.fmatos.gaeSample.Greetings</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
 </web-app>

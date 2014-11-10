@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fmatosqg.gatherimages.downloader.ImageDownloader;
-import com.fmatosqg.gatherimages.downloader.nasa.NasaPictureOfTheDayDownloader;
-import com.fmatosqg.gatherimages.downloader.pinterest.PinterestFeed;
-import com.fmatosqg.gatherimages.downloader.utils.DownloaderException;
+import com.fmatos.gaeSample.downloader.AbstractRssDownloader;
+import com.fmatos.gaeSample.downloader.Album;
+import com.fmatos.gaeSample.downloader.JPLDownloader;
   
 @Controller
 public class TestController {
@@ -32,21 +31,41 @@ public class TestController {
 		return "student1";
 	}
   
-	@RequestMapping(value="test/image")
+//	@RequestMapping(value="test/image")
+//	public @ResponseBody 
+//    String getImage() throws DownloaderException {
+//		
+//		ImageDownloader downloader = new NasaPictureOfTheDayDownloader();
+////		return downloader.getRandomPhotoUrl(null);
+//		return downloader.getDownloaderName();
+//			
+//	}
+	
+//	@RequestMapping(value="test/9gag")
+//	public @ResponseBody
+//    String getImagePinterest() throws DownloaderException {
+//		
+//		ImageDownloader downloader = new NineGagDownloader();
+//		return downloader.getRandomPhotoUrl(DownloaderConfiguration.getEmptyInstance());
+//	}
+	
+	@RequestMapping(value="test/nasa")
 	public @ResponseBody
-    String getImage() throws DownloaderException {
+    String getImageNasa()  {
 		
-		ImageDownloader downloader = new NasaPictureOfTheDayDownloader();
-//		return downloader.getRandomPhotoUrl(null);
-		return downloader.getDownloaderName();
-			
+		AbstractRssDownloader downloader = new JPLDownloader();
+		return downloader.getRandomPhotoUrl();
 	}
 	
-	@RequestMapping(value="test/pinterest")
-	public @ResponseBody
-    String getImagePinterest() throws DownloaderException {
+//	@RequestMapping(value="test/list")
+	@RequestMapping(value="test/list", produces={"application/json"})
+	public 
+	@ResponseBody Album 
+	getImageList()  {
 		
-		ImageDownloader downloader = new PinterestFeed();
-		return downloader.getRandomPhotoUrl(null);
+		AbstractRssDownloader downloader = new JPLDownloader();
+
+		return downloader.getRandomAlbum();
 	}
+
 }

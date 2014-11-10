@@ -94,6 +94,19 @@
                 <version>${spring.version}</version>   
            </dependency>   
            
+           <dependency>
+			    <groupId>org.codehaus.jackson</groupId>
+			    <artifactId>jackson-jaxrs</artifactId>
+			    <version>1.9.2</version>
+		   </dependency>
+           
+           	<!-- RSS and Atom parsers -->
+			<dependency>
+				<groupId>rome</groupId>
+				<artifactId>rome</artifactId>
+				<version>1.0</version>
+			</dependency>
+           
            <!-- solves weird runtime issue  DevAppServerMain class not found-->
            <dependency>
 			    <groupId>com.google.appengine</groupId>
@@ -116,12 +129,7 @@
             <version>1.9.15</version>
             <scope>test</scope>
         </dependency>
-       <dependency>
-                <groupId>com.fmatosqg.gatherImages</groupId>
-                <artifactId>Gather_Images</artifactId>
-                <version>1.2.2</version>
-        </dependency>
-
+        
     </dependencies>
 
     <build>
@@ -181,9 +189,9 @@
                     <port>8888</port>
                     <!-- Comment in the below snippet to enable local debugging with a remove debugger
                          like those included with Eclipse or IntelliJ -->
-                    <!-- jvmFlags>
+                    <jvmFlags>
                       <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag>
-                    </jvmFlags -->
+                    </jvmFlags>
                 </configuration>
                 <executions>
                     <execution>
@@ -209,7 +217,7 @@
 									<!-- org.codehaus.mojo:versions-maven-plugin:2.1:display-plugin-updates -->
 										<groupId>org.codehaus.mojo</groupId>
 										<artifactId>versions-maven-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
+										<versionRange>1.0.0</versionRange>
 										<goals>
 											<goal>display-dependency-updates</goal>
 											<goal>display-plugin-updates</goal>
@@ -223,6 +231,35 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				
+		
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-compiler-plugin</artifactId>
+	                <version>3.1</version>
+	                <configuration>
+	                    <encoding>UTF-8</encoding>
+	                    <source>1.8</source>
+					    <target>1.8</target>
+					    <optimize>true</optimize>
+					 
+	                </configuration> 
+	             </plugin>
+	        	<plugin>
+					  <groupId>org.apache.maven.plugins</groupId>
+					  <artifactId>maven-eclipse-plugin</artifactId>
+					  <configuration> 
+					    <excludes>
+						  	<exclude>
+						  	com.google.appengine:appengine-api-1.0-sdk
+						  	</exclude>
+						  	<exclude>
+						  	com.google.appengine:appengine-tools-sdk
+						  	</exclude>
+					  </excludes>
+					  </configuration> 
+				</plugin>
+	        
 			</plugins>
 		</pluginManagement>
     </build>
