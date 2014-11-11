@@ -28,8 +28,8 @@
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
-		<url-pattern>/*</url-pattern>
-		<url-pattern>/abc</url-pattern>
+		<!-- <url-pattern>/*</url-pattern>
+		<url-pattern>/abc</url-pattern> -->
 	</servlet-mapping>
 
 	<bean

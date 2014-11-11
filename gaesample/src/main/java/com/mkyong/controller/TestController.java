@@ -20,7 +20,6 @@ public class TestController {
  
 		System.out.println("aaaaa");
 
-//		httpRes.setStatus(404);
 		return "tttest";
  
 	}
@@ -30,24 +29,6 @@ public class TestController {
     String getStudent() {
 		return "student1";
 	}
-  
-//	@RequestMapping(value="test/image")
-//	public @ResponseBody 
-//    String getImage() throws DownloaderException {
-//		
-//		ImageDownloader downloader = new NasaPictureOfTheDayDownloader();
-////		return downloader.getRandomPhotoUrl(null);
-//		return downloader.getDownloaderName();
-//			
-//	}
-	
-//	@RequestMapping(value="test/9gag")
-//	public @ResponseBody
-//    String getImagePinterest() throws DownloaderException {
-//		
-//		ImageDownloader downloader = new NineGagDownloader();
-//		return downloader.getRandomPhotoUrl(DownloaderConfiguration.getEmptyInstance());
-//	}
 	
 	@RequestMapping(value="test/nasa")
 	public @ResponseBody
@@ -65,7 +46,6 @@ public class TestController {
 		return downloader.getRandomPhotoUrl();
 	}
 	
-//	@RequestMapping(value="test/list")
 	@RequestMapping(value="test/list", produces={"application/json"})
 	public 
 	@ResponseBody Album 
