@@ -30,9 +30,9 @@ public class JPLDownloader extends AbstractRssDownloader {
 		{
 			LOGGER.info("Links " + syndFeed.getLink());
 
-			List<String> urls = new LinkedList<String>();
+			List<Photo> photos = new LinkedList<Photo>();
 			Album album = new Album();
-			album.setPhotos(urls);
+			album.setPhotos(photos);
 
 			String photoPattern = getGenericImageFinder(); 
 			//                           			<img src='http://photojournal.jpl.nasa.gov/thumb/PIA18828.jpg' height='100' width='142' border='0' style='vertical-align:middle' alt='' /
@@ -49,7 +49,11 @@ public class JPLDownloader extends AbstractRssDownloader {
 				if ( str.find()) {
 					String url = str.group(2);
 					LOGGER.debug("found url {} "  , url);
-					urls.add(url);
+					
+					url = transformUrl(url);
+					Photo ph = new Photo(url,entry.getTitle().trim());
+					ph.setLink(entry.getLink().trim());
+					photos.add(ph); 
 				}
 				
 			}
@@ -57,6 +61,11 @@ public class JPLDownloader extends AbstractRssDownloader {
 			
 			return album;
 		}
+	}
+
+	private String transformUrl(String url) {
+
+		return  url.trim().replace("thumb", "jpeg");
 	}
 
 }

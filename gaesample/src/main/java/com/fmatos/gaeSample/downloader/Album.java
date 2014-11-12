@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Album {
 
-	private List<String> photos;
+	private List<Photo> photos;
 
-	public List<String> getPhotos() {
+	public List<Photo> getPhotos() {
 		return photos;
 	}
 
-	public void setPhotos(List<String> photos) {
+	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
 

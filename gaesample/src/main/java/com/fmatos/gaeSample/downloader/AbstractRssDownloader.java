@@ -38,7 +38,7 @@ abstract public class AbstractRssDownloader implements ImageDownloader {
 
 			Album album = getRandomAlbum();
 			if ( album.getPhotos() != null && album.getPhotos().size() > 0) {
-				return album.getPhotos().get(0);
+				return album.getPhotos().get(0).getUrl();
 			} else {
 				return null;
 			}

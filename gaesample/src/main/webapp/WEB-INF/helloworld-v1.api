@@ -24,21 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "helloworld.greetings.listGreeting" : {
-      "path" : "hellogreeting",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "replace this with your web client ID" ],
-      "clientIds" : [ "replace this with your web client ID", "replace this with your Android client ID", "replace this with your iOS client ID" ],
-      "rosyMethod" : "com.fmatos.gaeSample.Greetings.listGreeting",
-      "request" : {
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "helloworld.greetings.multiply" : {
       "path" : "hellogreeting/{times}",
       "httpMethod" : "post",
@@ -56,6 +41,21 @@
         },
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "helloworld.greetings.listGreeting" : {
+      "path" : "hellogreeting",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "replace this with your web client ID" ],
+      "clientIds" : [ "replace this with your web client ID", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.fmatos.gaeSample.Greetings.listGreeting",
+      "request" : {
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -123,17 +123,17 @@
       }
     },
     "methods" : {
-      "com.fmatos.gaeSample.Greetings.listGreeting" : {
-        "response" : {
-          "$ref" : "HelloGreetingCollection"
-        }
-      },
       "com.fmatos.gaeSample.Greetings.insertGreeting" : {
         "request" : {
           "$ref" : "HelloGreeting"
         },
         "response" : {
           "$ref" : "HelloGreeting"
+        }
+      },
+      "com.fmatos.gaeSample.Greetings.listGreeting" : {
+        "response" : {
+          "$ref" : "HelloGreetingCollection"
         }
       },
       "com.fmatos.gaeSample.Greetings.authedGreeting" : {
